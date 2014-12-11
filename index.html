@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="store">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Angular Base</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="app.js"></script>
+        
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <h1>Test angular JS</h1>
+        
+<p>la prueba es {{10+7}}</p>
+<div ng-controller="StoreController as store">
+<div ng-repeat="product in store.products">
+    <div ng-hide="product.soldOut">
+        
+        <h1> {{product.name}}</h1>
+    <h2>{{product.price | currency}}</h2>
+    <p> {{product.description}}</p>
+         <img ng-src="{{product.images[0]}}" />
+    <button class="btn btn-success" ng-show="product.canPurchase">add to Cart</button>
+        <p class="text-danger" ng-hide="product.canPurchase">No se vende!</p>
+        <section ng-controller="TabController as tab">
+          <ul class="nav nav-pills">
+            <li ng-class="{ active: tab.isSelected(1)}"><a href ng-click="tab.setTab(1)">Descripción</a></li>
+              <li ng-class="{ active:tab.isSelected(2)}"><a href ng-click="tab.setTab(2)">Especificaciones</a></li>
+              <li ng-class="{ active:tab.isSelected(3)}"><a href ng-click="tab.setTab(3)">Reviews</a></li>
+           
+            </ul>
+          <div class="panel" ng-show="tab === 1">
+            <h4>Descripción</h4>
+              <p>{{product.description}}</p>
+            </div>
+            <div class="panel" ng-show="tab === 2">
+                <h4>Especifications</h4>
+            <blocknote>None yet</blocknote>
+            </div>
+            <div class="panel" ng-show="tab === 3">
+               <h4>Reviews</h4>
+            <blocknote>None yet</blocknote>
+            </div>
+        </section>
+        
+        </div>
+ </div>
+        
+</div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+
+    </body>
+</html>
